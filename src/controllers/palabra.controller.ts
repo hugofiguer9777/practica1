@@ -104,7 +104,7 @@ export class PalabraController {
     (await this.palabraRepository.find(filter)).forEach ((value) =>{
       this.testvar=value;
     });
-    //console.log(this.testvar);
+    delete this.testvar.id;
     return this.testvar;
   }
 

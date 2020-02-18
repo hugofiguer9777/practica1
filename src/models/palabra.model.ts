@@ -10,6 +10,12 @@ export class Palabra extends Entity {
 
   @property({
     type: 'string',
+    required: true,
+  })
+  codigo: string;
+
+  @property({
+    type: 'string',
     id: true,
     generated: true,
   })

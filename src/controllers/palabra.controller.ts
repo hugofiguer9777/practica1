@@ -85,7 +85,7 @@ export class PalabraController {
     return this.palabraRepository.find(filter);
   }
 
-  public testvar:Palabra;
+  public palabra:Palabra;
   @get('/api/palabras/last', {
     responses: {
       '200': {
@@ -102,10 +102,13 @@ export class PalabraController {
     @param.query.object('filter', getFilterSchemaFor(Palabra)) filter?: Filter<Palabra>,
   ): Promise<Palabra> {
     (await this.palabraRepository.find(filter)).forEach ((value) =>{
-      this.testvar=value;
+      this.palabra=value;
     });
-    delete this.testvar.id;
-    return this.testvar;
+    
+    if(this.palabra != null){
+      delete this.palabra.id; 
+    }
+    return this.palabra;
   }
 
   @patch('/api/palabras', {
